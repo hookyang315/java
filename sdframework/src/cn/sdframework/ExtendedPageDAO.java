@@ -13,9 +13,9 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
 import cn.sdframework.support.Column;
-import cn.sdframework.support.ConsoleOut;
 import cn.sdframework.support.DataPage;
 import cn.sdframework.support.dict.ColumnType;
+import cn.sdframework.support.util.ConsoleOut;
 
 @Repository("pageDao")
 public abstract class ExtendedPageDAO<T> extends CrudDao<T> {

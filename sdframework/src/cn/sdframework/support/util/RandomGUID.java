@@ -1,4 +1,4 @@
-package cn.sdframework.support;
+package cn.sdframework.support.util;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

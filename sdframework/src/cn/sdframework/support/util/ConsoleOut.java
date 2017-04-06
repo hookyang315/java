@@ -1,4 +1,4 @@
-package cn.sdframework.support;
+package cn.sdframework.support.util;
 
 import cn.sdframework.config.ApplicationParam;
 

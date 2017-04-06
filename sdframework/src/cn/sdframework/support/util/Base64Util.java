@@ -1,4 +1,4 @@
-package cn.sdframework.support;
+package cn.sdframework.support.util;
 
 import java.io.IOException;
 import sun.misc.BASE64Decoder;
