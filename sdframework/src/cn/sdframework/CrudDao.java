@@ -19,6 +19,7 @@ import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.stereotype.Repository;
 
 import cn.sdframework.support.Column;
+import cn.sdframework.support.JoinAtom;
 import cn.sdframework.support.dict.ColumnType;
 import cn.sdframework.support.util.ConsoleOut;
 import cn.sdframework.support.util.DateUtil;
@@ -226,20 +227,17 @@ public abstract class CrudDao<T> extends SimpleDao {
 			execSql = new StringBuffer("DELETE FROM " + tableName);
 			final List<Column> columns = this.fetchColumn();
 			if (columns != null && columns.size() > 0) {
-				List<Class<?>> joinClasses = new ArrayList<Class<?>>();
 				Column _k = null;
 				for (Column _c : columns) {
 					if (_c.isKey) {
 						_k = _c;
 						continue;
-					}else{
-						
 					}
 				}
-				
-				
-				
-				
+				final List<JoinAtom> joins = this.fetchJoin();
+				if(joins!=null&&joins.size()>0){
+					
+				}
 				if (_k != null) {
 					execSql.append(" WHERE " + _k.columnName + "=?");
 					ConsoleOut.print("DELETE SQL:" + execSql.toString());

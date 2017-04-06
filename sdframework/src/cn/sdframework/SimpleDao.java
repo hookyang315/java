@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import cn.sdframework.support.Column;
 import cn.sdframework.support.ColumnProp;
+import cn.sdframework.support.Join;
+import cn.sdframework.support.JoinAtom;
 import cn.sdframework.support.Table;
 
 @Repository("simpleDao")
@@ -79,6 +81,29 @@ public abstract class SimpleDao{
 			}
 		}
 		return toConfigColumns;
+	}
+	
+	protected List<JoinAtom> fetchJoin(){
+		Field[] fields = classModule.getDeclaredFields();
+		List<JoinAtom> joinAtoms = null;
+		if(fields!=null&&fields.length>0){
+			joinAtoms = new ArrayList<JoinAtom>();
+			for(Field _f : fields){
+				if(_f.isAnnotationPresent(Join.class)){
+					JoinAtom ja = new JoinAtom();
+					Join joinAnno = _f.getAnnotation(Join.class);
+					ja.key = joinAnno.key();
+					ja.operate = joinAnno.operate();
+					ja.relKey = joinAnno.relKey();
+					ja.type = joinAnno.joinType();
+					ja.field = _f;
+					joinAtoms.add(ja);
+				}else{
+					continue;
+				}
+			}
+		}
+		return joinAtoms;
 	}
 	
 	protected String parGetName(String fieldName) {
