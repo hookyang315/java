@@ -29,7 +29,7 @@ public abstract class CrudDao<T> extends SimpleDao {
 	protected final String dialect = "mysql";
 
 	private String tbname = this.tableName;
-
+	
 	public String getTbname() {
 		return tbname;
 	}

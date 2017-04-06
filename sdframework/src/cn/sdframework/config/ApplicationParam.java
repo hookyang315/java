@@ -15,6 +15,7 @@ public class ApplicationParam {
 	public static String maxIdle;
 	public static String maxWait;
 	public static boolean printsql = true;
+	public static String test="test";
 	
 	static{
 		ResourceBundle bundle = ResourceBundle.getBundle("app");
